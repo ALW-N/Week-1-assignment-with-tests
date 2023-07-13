@@ -17,16 +17,30 @@ function calculateTotalSpentByCategory(transactions) {
     }else {
       spend[t.category] = t.price
     }
+    var keys = Object.keys(spend)
+    // console.log(keys)
 
+    let answer = []
+    for(i = 0 ; i < keys.length; i++){
+      var category = keys[i]
+      var obj = {
+        category: category,
+        amountSpent: spend[category]
+      }
+      answer.push(obj)
+    }
+    // console.log(answer);
+    return answer;
   }
-  // return [];
-  console.log(spend)
 }
 
-var transactions = [{ itemName: "Milk", category: "Diary", price: 35, timestamp:"12-oct-2023" },
-{ itemName:"Cheese", category:"Diary", price:50 , timestamp: "12-oct-2023" },
-{ itemName: "Noodles", category:"Food", price:15 , timestamp:"12-oct-2023" }
+
+var transactions = [
+  { itemName: "Milk", category: "Diary", price: 35, timestamp:"12-oct-2023" },
+  { itemName:"Cheese", category:"Diary", price:50 , timestamp: "12-oct-2023" },
+  { itemName: "Noodles", category:"Food", price:15 , timestamp:"12-oct-2023" }
 ]
 
-calculateTotalSpentByCategory(transactions)
+var result = calculateTotalSpentByCategory(transactions)
+console.log(result)
 module.exports = calculateTotalSpentByCategory;
